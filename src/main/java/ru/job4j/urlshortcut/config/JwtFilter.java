@@ -27,12 +27,9 @@ public class JwtFilter extends OncePerRequestFilter {
 
         String path = request.getRequestURI();
 
-        // Пропускаем без авторизации (PUBLIC ENDPOINTS)
+// Пропускаем без авторизации (PUBLIC ENDPOINTS)
         if (path.equals("/registration") ||
                 path.equals("/auth") ||
-                path.equals("/auth-test") ||
-                path.equals("/ping") ||
-                path.equals("/check-login") ||
                 path.startsWith("/h2-console") ||
                 path.startsWith("/redirect/")) {
             filterChain.doFilter(request, response);
