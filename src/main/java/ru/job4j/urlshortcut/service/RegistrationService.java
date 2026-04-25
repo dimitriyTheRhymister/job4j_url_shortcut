@@ -1,8 +1,8 @@
-package com.urlshortcut.service;
+package ru.job4j.urlshortcut.service;
 
-import com.urlshortcut.dto.RegistrationResponse;
-import com.urlshortcut.entity.Site;
-import com.urlshortcut.repository.SiteRepository;
+import ru.job4j.urlshortcut.dto.RegistrationResponse;
+import ru.job4j.urlshortcut.entity.Site;
+import ru.job4j.urlshortcut.repository.SiteRepository;
 import org.springframework.stereotype.Service;
 
 @Service

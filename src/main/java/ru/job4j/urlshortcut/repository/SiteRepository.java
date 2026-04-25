@@ -1,6 +1,6 @@
-package com.urlshortcut.repository;
+package ru.job4j.urlshortcut.repository;
 
-import com.urlshortcut.entity.Site;
+import ru.job4j.urlshortcut.entity.Site;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

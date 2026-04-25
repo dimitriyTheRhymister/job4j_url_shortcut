@@ -1,4 +1,4 @@
-package com.urlshortcut.service;
+package ru.job4j.urlshortcut.service;
 
 import org.springframework.stereotype.Component;
 import java.util.UUID;

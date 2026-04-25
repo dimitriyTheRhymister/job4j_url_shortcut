@@ -1,4 +1,4 @@
-package com.urlshortcut.entity;
+package ru.job4j.urlshortcut.entity;
 
 import javax.persistence.*;  // ⬅️ ВАЖНО: javax, НЕ jakarta!
 import java.time.LocalDateTime;

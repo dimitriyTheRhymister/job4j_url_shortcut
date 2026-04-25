@@ -1,4 +1,4 @@
-package com.urlshortcut.dto;
+package ru.job4j.urlshortcut.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
