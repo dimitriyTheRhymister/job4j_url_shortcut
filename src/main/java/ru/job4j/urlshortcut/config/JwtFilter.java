@@ -27,18 +27,19 @@ public class JwtFilter extends OncePerRequestFilter {
 
         String path = request.getRequestURI();
 
-        // Пропускаем без авторизации:
-        // - регистрацию
-        // - авторизацию
-        // - редирект (пока нет, но подготовим)
+        // Пропускаем без авторизации (PUBLIC ENDPOINTS)
         if (path.equals("/registration") ||
                 path.equals("/auth") ||
+                path.equals("/auth-test") ||
+                path.equals("/ping") ||
+                path.equals("/check-login") ||
+                path.startsWith("/h2-console") ||
                 path.startsWith("/redirect/")) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        // Проверяем Authorization header
+        // Проверяем Authorization header для защищённых эндпоинтов
         String authHeader = request.getHeader("Authorization");
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
