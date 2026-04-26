@@ -27,17 +27,15 @@ public class JwtFilter extends OncePerRequestFilter {
 
         String path = request.getRequestURI();
 
-// Пропускаем без авторизации (PUBLIC ENDPOINTS)
-        if (path.equals("/registration") ||
-                path.equals("/auth") ||
-                path.startsWith("/h2-console") ||
-                path.startsWith("/redirect/")) {
+        if (path.equals("/registration")
+                || path.equals("/auth")
+                || path.startsWith("/h2-console")
+                || path.startsWith("/redirect/")) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        // Проверяем Authorization header для защищённых эндпоинтов
-        String authHeader = request.getHeader("Authorization");
+                String authHeader = request.getHeader("Authorization");
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);
@@ -50,8 +48,7 @@ public class JwtFilter extends OncePerRequestFilter {
             }
         }
 
-        // Если авторизация не прошла
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.getWriter().write("Unauthorized");
     }
 }

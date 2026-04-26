@@ -18,7 +18,7 @@ public class JwtService {
 
     public JwtService(@Value("${jwt.expiration}") long expiration) {
         this.expiration = expiration;
-        // Генерируем безопасный ключ для HS512 (64 байта = 512 бит)
+        /* Генерируем безопасный ключ для HS512 (64 байта = 512 бит) */
         this.signingKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
     }
 

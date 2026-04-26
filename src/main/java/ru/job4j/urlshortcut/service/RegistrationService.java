@@ -2,6 +2,7 @@ package ru.job4j.urlshortcut.service;
 
 import ru.job4j.urlshortcut.dto.RegistrationResponse;
 import ru.job4j.urlshortcut.entity.Site;
+import ru.job4j.urlshortcut.generator.CredentialGenerator;
 import ru.job4j.urlshortcut.repository.SiteRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,16 +19,13 @@ public class RegistrationService {
     }
     
     public RegistrationResponse registerSite(String siteName) {
-        // Проверяем, существует ли уже такой сайт
         if (siteRepository.existsBySiteName(siteName)) {
             return new RegistrationResponse(false, null, null);
         }
         
-        // Генерируем уникальные логин и пароль
         String login = credentialGenerator.generateLogin();
         String password = credentialGenerator.generatePassword();
         
-        // Сохраняем сайт в БД (в реальном проекте пароль нужно хешировать!)
         Site site = new Site(siteName, login, password);
         siteRepository.save(site);
         

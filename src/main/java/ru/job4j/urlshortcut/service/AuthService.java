@@ -22,7 +22,6 @@ public class AuthService {
         System.out.println("Login received: '" + login + "'");
         System.out.println("Password received: '" + password + "'");
 
-        // Ищем сайт по логину
         Optional<Site> siteOpt = siteRepository.findByLogin(login);
 
         if (siteOpt.isEmpty()) {

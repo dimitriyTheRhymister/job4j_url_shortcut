@@ -1,6 +1,6 @@
 package ru.job4j.urlshortcut.entity;
 
-import javax.persistence.*;  // ⬅️ ВАЖНО: javax, НЕ jakarta!
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,7 +21,9 @@ public class Site {
 
     private LocalDateTime createdAt;
 
-    public Site() {}
+    public Site() {
+
+    }
 
     public Site(String siteName, String login, String passwordHash) {
         this.siteName = siteName;
@@ -30,19 +32,43 @@ public class Site {
         this.createdAt = LocalDateTime.now();
     }
 
-    // Геттеры и сеттеры
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getSiteName() { return siteName; }
-    public void setSiteName(String siteName) { this.siteName = siteName; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public String getLogin() { return login; }
-    public void setLogin(String login) { this.login = login; }
+    public String getSiteName() {
+        return siteName;
+    }
 
-    public String getPasswordHash() { return passwordHash; }
-    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
+    public void setSiteName(String siteName) {
+        this.siteName = siteName;
+    }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }

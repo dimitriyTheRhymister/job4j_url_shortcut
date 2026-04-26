@@ -7,9 +7,10 @@ import java.util.Optional;
 
 public interface SiteRepository extends JpaRepository<Site, Long> {
     Optional<Site> findBySiteName(String siteName);
+
     Optional<Site> findByLogin(String login);
+
     boolean existsBySiteName(String siteName);
 
-    // ⬇️ ДОБАВЛЯЕМ ЭТОТ МЕТОД
     Optional<Site> findByLoginAndPasswordHash(String login, String passwordHash);
 }

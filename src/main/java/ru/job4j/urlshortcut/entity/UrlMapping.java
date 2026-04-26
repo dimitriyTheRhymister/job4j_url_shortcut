@@ -26,7 +26,9 @@ public class UrlMapping {
     @Column(nullable = false)
     private Long clicks = 0L;
 
-    public UrlMapping() {}
+    public UrlMapping() {
+
+    }
 
     public UrlMapping(String originalUrl, String shortCode, Site site) {
         this.originalUrl = originalUrl;
@@ -36,22 +38,39 @@ public class UrlMapping {
         this.clicks = 0L;
     }
 
-    // Геттеры и сеттеры
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id; }
 
-    public String getOriginalUrl() { return originalUrl; }
-    public void setOriginalUrl(String originalUrl) { this.originalUrl = originalUrl; }
+    public void setId(Long id) {
+        this.id = id; }
 
-    public String getShortCode() { return shortCode; }
-    public void setShortCode(String shortCode) { this.shortCode = shortCode; }
+    public String getOriginalUrl() {
+        return originalUrl; }
 
-    public Site getSite() { return site; }
-    public void setSite(Site site) { this.site = site; }
+    public void setOriginalUrl(String originalUrl) {
+        this.originalUrl = originalUrl; }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public String getShortCode() {
+        return shortCode; }
 
-    public Long getClicks() { return clicks; }
-    public void setClicks(Long clicks) { this.clicks = clicks; }
+    public void setShortCode(String shortCode) {
+        this.shortCode = shortCode; }
+
+    public Site getSite() {
+        return site; }
+
+    public void setSite(Site site) {
+        this.site = site; }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt; }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt; }
+
+    public Long getClicks() {
+        return clicks; }
+
+    public void setClicks(Long clicks) {
+        this.clicks = clicks; }
 }

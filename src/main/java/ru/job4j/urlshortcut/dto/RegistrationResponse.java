@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class RegistrationResponse {
     @JsonProperty("registration")
     private boolean registration;
-    
+
     @JsonProperty("login")
     private String login;
-    
+
     @JsonProperty("password")
     private String password;
 
@@ -18,8 +18,15 @@ public class RegistrationResponse {
         this.password = password;
     }
 
-    // Геттеры
-    public boolean isRegistration() { return registration; }
-    public String getLogin() { return login; }
-    public String getPassword() { return password; }
+    public boolean isRegistration() {
+        return registration;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

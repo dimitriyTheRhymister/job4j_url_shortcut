@@ -14,6 +14,9 @@ public class StatisticResponse {
         this.total = total;
     }
 
-    public String getUrl() { return url; }
-    public Long getTotal() { return total; }
+    public String getUrl() {
+        return url; }
+
+    public Long getTotal() {
+        return total; }
 }

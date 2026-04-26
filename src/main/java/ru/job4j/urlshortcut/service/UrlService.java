@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.job4j.urlshortcut.dto.StatisticResponse;
 import ru.job4j.urlshortcut.entity.Site;
 import ru.job4j.urlshortcut.entity.UrlMapping;
+import ru.job4j.urlshortcut.generator.CodeGenerator;
 import ru.job4j.urlshortcut.repository.SiteRepository;
 import ru.job4j.urlshortcut.repository.UrlMappingRepository;
 
@@ -62,10 +63,10 @@ public class UrlService {
         Site site = siteRepository.findByLogin(login)
                 .orElseThrow(() -> new RuntimeException("Site not found"));
 
-        // Используем обычный метод findBySite, без DTO в запросе
+        /* Используем обычный метод findBySite, без DTO в запросе */
         List<UrlMapping> mappings = urlMappingRepository.findBySite(site);
 
-        // Преобразуем в DTO в Java
+        /* Преобразуем в DTO в Java */
         return mappings.stream()
                 .map(m -> new StatisticResponse(m.getOriginalUrl(), m.getClicks()))
                 .collect(Collectors.toList());

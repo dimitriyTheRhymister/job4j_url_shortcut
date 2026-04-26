@@ -1,4 +1,4 @@
-package ru.job4j.urlshortcut.service;
+package ru.job4j.urlshortcut.generator;
 
 import org.springframework.stereotype.Component;
 import java.security.SecureRandom;
