@@ -17,18 +17,14 @@ public class RegistrationService {
         this.siteRepository = siteRepository;
         this.credentialGenerator = credentialGenerator;
     }
-    
+
     public RegistrationResponse registerSite(String siteName) {
-        if (siteRepository.existsBySiteName(siteName)) {
-            return new RegistrationResponse(false, null, null);
-        }
-        
         String login = credentialGenerator.generateLogin();
         String password = credentialGenerator.generatePassword();
-        
+
         Site site = new Site(siteName, login, password);
-        siteRepository.save(site);
-        
+        siteRepository.save(site);  /* если дубликат — полетит DataIntegrityViolationException */
+
         return new RegistrationResponse(true, login, password);
     }
 }

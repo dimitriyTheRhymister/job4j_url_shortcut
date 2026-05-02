@@ -51,12 +51,12 @@ public class UrlService {
         return shortCode;
     }
 
-    public Optional<String> getOriginalUrl(String shortCode) {
-        Optional<UrlMapping> mapping = urlMappingRepository.findByShortCode(shortCode);
-        mapping.ifPresent(urlMapping ->
-                urlMappingRepository.incrementClicks(shortCode)
-        );
-        return mapping.map(UrlMapping::getOriginalUrl);
+    public String getOriginalUrl(String shortCode) {
+        UrlMapping mapping = urlMappingRepository.findByShortCode(shortCode)
+                .orElseThrow(() -> new RuntimeException("URL not found"));
+
+        urlMappingRepository.incrementClicks(shortCode);
+        return mapping.getOriginalUrl();
     }
 
     public List<StatisticResponse> getStatistics(String login) {

@@ -29,8 +29,7 @@ public class UrlController {
 
     @GetMapping("/redirect/{code}")
     public void redirect(@PathVariable String code, HttpServletResponse response) throws IOException {
-        String originalUrl = urlService.getOriginalUrl(code)
-                .orElseThrow(() -> new RuntimeException("URL not found"));
+        String originalUrl = urlService.getOriginalUrl(code);
         response.sendRedirect(originalUrl);
     }
 
