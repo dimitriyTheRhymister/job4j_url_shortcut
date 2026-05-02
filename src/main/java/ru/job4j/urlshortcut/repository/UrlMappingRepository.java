@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-import ru.job4j.urlshortcut.dto.StatisticResponse;
 import ru.job4j.urlshortcut.entity.Site;
 import ru.job4j.urlshortcut.entity.UrlMapping;
 
