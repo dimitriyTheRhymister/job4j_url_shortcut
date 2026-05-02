@@ -22,7 +22,7 @@ public class AuthService {
         System.out.println("Login received: '" + login + "'");
         System.out.println("Password received: '" + password + "'");
 
-        Optional<Site> siteOpt = siteRepository.findByLogin(login);
+        Optional<Site> siteOpt = siteRepository.findByLoginAndPasswordHash(login, password);
 
         if (siteOpt.isEmpty()) {
             System.out.println("ERROR: Site not found for login: " + login);
