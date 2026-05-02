@@ -14,6 +14,8 @@ public interface UrlMappingRepository extends JpaRepository<UrlMapping, Long> {
 
     Optional<UrlMapping> findByShortCode(String shortCode);
 
+    boolean existsByShortCode(String shortCode);
+
     List<UrlMapping> findBySite(ru.job4j.urlshortcut.entity.Site site);
 
     Optional<UrlMapping> findBySiteAndOriginalUrl(ru.job4j.urlshortcut.entity.Site site, String originalUrl);
