@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-import ru.job4j.urlshortcut.entity.Site;
 import ru.job4j.urlshortcut.entity.UrlMapping;
 
 import java.util.List;
@@ -15,12 +14,25 @@ public interface UrlMappingRepository extends JpaRepository<UrlMapping, Long> {
 
     Optional<UrlMapping> findByShortCode(String shortCode);
 
-    List<UrlMapping> findBySite(Site site);
+    List<UrlMapping> findBySite(ru.job4j.urlshortcut.entity.Site site);
 
-    Optional<UrlMapping> findBySiteAndOriginalUrl(Site site, String originalUrl);
+    Optional<UrlMapping> findBySiteAndOriginalUrl(ru.job4j.urlshortcut.entity.Site site, String originalUrl);
 
     @Modifying
     @Transactional
     @Query("UPDATE UrlMapping u SET u.clicks = u.clicks + 1 WHERE u.shortCode = :shortCode")
     void incrementClicks(@Param("shortCode") String shortCode);
+
+    /**
+     * Атомарное увеличение счётчика и получение original_url.
+     * Работает в PostgreSQL через RETURNING.
+     * Для H2 в тестах использует отдельную реализацию.
+     */
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE url_mappings SET clicks = clicks + 1 "
+            + "WHERE short_code = :shortCode "
+            + "RETURNING original_url",
+            nativeQuery = true)
+    Optional<String> incrementAndGetUrl(@Param("shortCode") String shortCode);
 }

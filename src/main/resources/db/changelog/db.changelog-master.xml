@@ -7,7 +7,7 @@
 
     <changeSet id="1" author="job4j">
         <createTable tableName="sites">
-            <column name="id" type="BIGINT" autoIncrement="true">
+            <column name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="site_name" type="VARCHAR(255)">
@@ -25,7 +25,7 @@
 
     <changeSet id="2" author="job4j">
         <createTable tableName="url_mappings">
-            <column name="id" type="BIGINT" autoIncrement="true">
+            <column name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="original_url" type="VARCHAR(2048)">
